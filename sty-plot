@@ -1,0 +1,66 @@
+axes.titlesize    : 18
+axes.labelsize    : 18
+legend.fontsize   : 18
+xtick.labelsize   : 18
+ytick.labelsize   : 18
+figure.titlesize  : 18
+font.size         : 18
+
+mathtext.fontset : custom
+mathtext.cal     : sans
+mathtext.rm      : sans
+mathtext.it      : sans:italic
+mathtext.bf      : sans:bold
+
+savefig.transparent : True
+
+axes.facecolor      : white
+axes.linewidth      : 2
+#axes.grid           : True
+axes.axisbelow      : True
+
+patch.linewidth : 2
+patch.edgecolor : black
+
+lines.linewidth       : 2
+lines.markersize      : 10
+lines.markeredgewidth : 1
+
+xtick.top         : True
+ytick.right       : True
+xtick.major.width : 2
+ytick.major.width : 2
+xtick.major.size  : 8
+ytick.major.size  : 8
+xtick.minor.size  : 4
+ytick.minor.size  : 4
+xtick.minor.width : 2
+ytick.minor.width : 2
+xtick.direction   : in
+ytick.direction   : in
+
+legend.fancybox      : False
+legend.scatterpoints : 1
+legend.numpoints     : 1
+legend.handlelength  : 1
+legend.borderaxespad : 0.4
+legend.labelspacing  : 0.3
+legend.handletextpad : 0.2
+legend.edgecolor     : 0
+legend.framealpha    : 1
+
+font.sans-serif : Arial, Helvetica, Corbel
+font.family     : sans-serif
+
+figure.figsize    : 8.5, 8.0
+figure.autolayout : True
+figure.facecolor  : white
+
+axes.prop_cycle : cycler('color',['1f77b4', 'ff7f0e', '2ca02c', 'd62728', '9467bd', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
+
+grid.linestyle : -
+grid.linewidth : 2
+grid.alpha     : 0.15
+
+xtick.major.pad : 5
+
