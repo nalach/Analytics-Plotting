@@ -26,8 +26,8 @@ lines.linewidth       : 2
 lines.markersize      : 10
 lines.markeredgewidth : 1
 
-xtick.top         : True
-ytick.right       : True
+xtick.top         : False
+ytick.right       : False
 xtick.major.width : 2
 ytick.major.width : 2
 xtick.major.size  : 8
@@ -56,7 +56,8 @@ figure.figsize    : 8.5, 8.0
 figure.autolayout : True
 figure.facecolor  : white
 
-axes.prop_cycle : cycler('color',['1f77b4', 'ff7f0e', '2ca02c', 'd62728', '9467bd', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
+# axes.prop_cycle : cycler('color',['1f77b4', 'ff7f0e', '2ca02c', 'd62728', '9467bd', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
+axes.prop_cycle : cycler('color',['01097b', '1b03c3', '5202cf', '750cad', '9e1b74', 'c72f38', 'ea450d', 'fd5f04', 'ff872d', 'ffb578', 'ffdfc5'])
 
 grid.linestyle : -
 grid.linewidth : 2

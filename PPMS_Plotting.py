@@ -111,24 +111,24 @@ for sample in samples:
 
     ax.legend(frameon=False)
 
-    if isotherm_y_max < 10:
-        plt.ylim(-10,10)
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(2))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(1))
-    elif isotherm_y_max < 30:
-        #plt.ylim(-9,9)
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(4))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(2))
-    elif isotherm_y_max < 100:
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(20))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
-    else:
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(100))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(50))
+    # if isotherm_y_max < 10:
+    #     plt.ylim(-10,10)
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(2))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(1))
+    # elif isotherm_y_max < 30:
+    #     #plt.ylim(-9,9)
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(4))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(2))
+    # elif isotherm_y_max < 100:
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(20))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
+    # else:
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(100))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(50))
 
     plt.tight_layout()
 
-    plt.savefig("Sample_data/PPMS/" + sample["sample_name"] + "_Isotherms.png")
+    plt.savefig("Sample_data/PPMS/" + sample["sample_name"] + "_Isotherms.svg")
     plt.show()
 
 
@@ -153,8 +153,11 @@ for sample in samples:
     zfc_y = y[:index]
     fc_y = y[index:]
 
-    plt.plot(zfc_x, zfc_y, color = "red", label = "ZFC", linewidth=1, marker='o', markersize=3, markeredgewidth=1)
-    plt.plot(fc_x, fc_y, color = "black", label = "FC", linewidth=1, marker='o', markersize=3, markeredgewidth=1)
+    magnetic_field = zfc_fc['data'][1][1]
+    magnetic_field = round(magnetic_field)
+
+    plt.plot(zfc_x, zfc_y, color = "red", label = "ZFC " + str(magnetic_field) + " Oe", linewidth=1, marker='o', markersize=3, markeredgewidth=1)
+    plt.plot(fc_x, fc_y, color = "black", label = "FC " + str(magnetic_field) + " Oe", linewidth=1, marker='o', markersize=3, markeredgewidth=1)
 
     ax.set_xlabel("$T$ (K)")
     ax.set_ylabel("$4\mathrm{\pi}\chi_{\mathrm{V}}$")
@@ -164,7 +167,7 @@ for sample in samples:
             break
 
     if zfc_y[i] < -0.1:
-        plt.xlim(0,100)
+        plt.xlim(0,60)
         ax.xaxis.set_major_locator(ticker.MultipleLocator(10))
         ax.xaxis.set_minor_locator(ticker.MultipleLocator(5))
     else:
@@ -172,19 +175,27 @@ for sample in samples:
         ax.xaxis.set_major_locator(ticker.MultipleLocator(2))
         ax.xaxis.set_minor_locator(ticker.MultipleLocator(1))
 
-    if zfc_y.min() > -1:
+    if zfc_y.min() > -0.2:
+        plt.ylim(-0.2,)
+        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.05))
+        ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.025))
+    elif zfc_y.min() > -0.5:
+        plt.ylim(-0.5,)
+        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.1))
+        ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.05))
+    elif zfc_y.min() > -1:
         plt.ylim(-1,)
         ax.yaxis.set_major_locator(ticker.MultipleLocator(0.2))
         ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
-    elif zfc_y.min() > -1.5:
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.2))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
-    elif zfc_y.min() > -2.5:
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.4))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.2))
-    else:
-        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
-        ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.25))
+    # elif zfc_y.min() > -1.5:
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(0.2))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
+    # elif zfc_y.min() > -2.5:
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(0.4))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.2))
+    # else:
+    #     ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
+    #     ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.25))
 
     # ax.xaxis.set_major_locator(ticker.MultipleLocator(10))
     # ax.xaxis.set_minor_locator(ticker.MultipleLocator(5))
@@ -229,7 +240,7 @@ for sample in samples:
     # if zfc_y.min() > -1:
     #     plt.ylim(-1,)
 
-    plt.savefig("Sample_data/PPMS/" + sample["sample_name"] + "_ZFC-FC.png")
+    plt.savefig("Sample_data/PPMS/" + sample["sample_name"] + "_ZFC-FC.svg")
     plt.show()
 
 

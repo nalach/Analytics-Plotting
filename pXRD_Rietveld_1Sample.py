@@ -42,9 +42,10 @@ def read_graphs_file(file_path):
     return (x_values, y_obs, y_calc, diff, labels)
 
 def plot_sample(x_values, y_obs, y_calc, diff, labels, tickfiles, sample_name):
-    plt.figure(figsize=(8,6))
+    plt.figure(figsize=(9,6))
     ax = plt.axes()
-    plt.plot(x_values, y_obs, color='blue', marker='o', markersize=4, markeredgewidth=1, linestyle='none', markerfacecolor='none')
+    #plt.plot(x_values, y_obs, color='blue', marker='o', markersize=4, markeredgewidth=1, linestyle='none', markerfacecolor='none')
+    plt.plot(x_values, y_obs, color='blue', linewidth=2)
     plt.plot(x_values, y_calc, color='red', linewidth=2)
     plt.plot(x_values, diff, color='grey', linewidth=1)
     tick_y = -0.15
@@ -87,13 +88,15 @@ def plot_sample(x_values, y_obs, y_calc, diff, labels, tickfiles, sample_name):
 
     ax.legend(labels[1:], frameon=False)
 
+    #plt.ylim(-0.32, 1.5)
     plt.xlim(x_values[0],x_values[-1])
+    #plt.xlim(x_values[0], 90)
     plt.tight_layout()
 
-    plt.savefig(sample_name + '.png')
+    plt.savefig("Sample_data/XRD/" + sample_name + '_Rietveld.png')
     plt.show()
 
-xrd_folder_path = os.path.join("Sample_data","XRD")
+xrd_folder_path = os.path.join("Sample_data","XRD","Rietveld")
 file_names = [filename for filename in os.listdir(xrd_folder_path) if os.path.isfile(os.path.join(xrd_folder_path, filename))]
 file_names = [''.join(filename.split('.')[:-1]) for filename in file_names if filename.split('.')[-1]=='txt']
 file_names.sort()
